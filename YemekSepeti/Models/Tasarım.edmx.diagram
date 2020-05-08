@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c9262c9c866b487aa0d1cffd9ecf2257" Name="Diagram1">
+        <EntityTypeShape EntityType="TasarımModel.Adres" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Icerik" Width="1.5" PointX="13.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Ilce" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Odeme" Width="1.5" PointX="15" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Restoran" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Roller" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Sehir" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Siparis" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Urun" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Urun_Icerik" Width="1.5" PointX="15.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Uye" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Yonetici" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TasarımModel.Yorum" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="TasarımModel.FK_Adres_Ilce" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Adres_Sehir" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Adres_Uye" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Urun_Icerik_Icerik" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Ilce_Sehir" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Restoran_Ilce" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Odeme_Siparis" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Restoran_Roller" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Restoran_Sehir" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Urun_Restoran" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Yorum_Restoran" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Uye_Roller" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Yonetici_Roller" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Siparis_Urun" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Siparis_Uye" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Urun_Icerik_Urun" ManuallyRouted="false" />
+        <AssociationConnector Association="TasarımModel.FK_Yorum_Uye" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

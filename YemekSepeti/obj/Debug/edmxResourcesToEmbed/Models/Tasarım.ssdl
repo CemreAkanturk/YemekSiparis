@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TasarımModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Adres">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SehirId" Type="int" Nullable="false" />
+    <Property Name="IlceId" Type="int" Nullable="false" />
+    <Property Name="Icerik" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UyeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Icerik">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ilce">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="SehirId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Odeme">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OdemeSekli" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SiparisId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Restoran">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SehirId" Type="int" Nullable="false" />
+    <Property Name="IlceId" Type="int" Nullable="false" />
+    <Property Name="Puan" Type="int" Nullable="false" />
+    <Property Name="RolId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roller">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RolAdi" Type="nchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sehir">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Siparis">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tarih" Type="date" Nullable="false" />
+    <Property Name="Ucret" Type="int" Nullable="false" />
+    <Property Name="Durum" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Kalori" Type="int" Nullable="false" />
+    <Property Name="UrunId" Type="int" Nullable="false" />
+    <Property Name="UyeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Urun">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Kalori" Type="int" Nullable="false" />
+    <Property Name="Fiyat" Type="int" Nullable="false" />
+    <Property Name="Fotograf" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Acıklama" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RestoranId" Type="int" Nullable="false" />
+    <Property Name="StokMiktari" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Urun_Icerik">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IcerikId" Type="int" Nullable="false" />
+    <Property Name="UrunId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Uye">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Parola" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="DogumTarih" Type="date" Nullable="false" />
+    <Property Name="RolId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Yonetici">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Parola" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Fotograf" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RolId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Yorum">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Icerik" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UyeId" Type="int" Nullable="false" />
+    <Property Name="RestoranId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Adres_Ilce">
+    <End Role="Ilce" Type="Self.Ilce" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ilce">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="IlceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adres_Sehir">
+    <End Role="Sehir" Type="Self.Sehir" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehir">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="SehirId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adres_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="UyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ilce_Sehir">
+    <End Role="Sehir" Type="Self.Sehir" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ilce" Type="Self.Ilce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehir">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ilce">
+        <PropertyRef Name="SehirId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Odeme_Siparis">
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Odeme" Type="Self.Odeme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Siparis">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Odeme">
+        <PropertyRef Name="SiparisId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Restoran_Ilce">
+    <End Role="Ilce" Type="Self.Ilce" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Restoran" Type="Self.Restoran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ilce">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Restoran">
+        <PropertyRef Name="IlceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Restoran_Roller">
+    <End Role="Roller" Type="Self.Roller" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Restoran" Type="Self.Restoran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roller">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Restoran">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Restoran_Sehir">
+    <End Role="Sehir" Type="Self.Sehir" Multiplicity="1" />
+    <End Role="Restoran" Type="Self.Restoran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehir">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Restoran">
+        <PropertyRef Name="SehirId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="UrunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="1" />
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="UyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urun_Icerik_Icerik">
+    <End Role="Icerik" Type="Self.Icerik" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Urun_Icerik" Type="Self.Urun_Icerik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Icerik">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Urun_Icerik">
+        <PropertyRef Name="IcerikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urun_Icerik_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Urun_Icerik" Type="Self.Urun_Icerik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Urun_Icerik">
+        <PropertyRef Name="UrunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urun_Restoran">
+    <End Role="Restoran" Type="Self.Restoran" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restoran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Urun">
+        <PropertyRef Name="RestoranId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uye_Roller">
+    <End Role="Roller" Type="Self.Roller" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Uye" Type="Self.Uye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roller">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Uye">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yonetici_Roller">
+    <End Role="Roller" Type="Self.Roller" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Yonetici" Type="Self.Yonetici" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roller">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Yonetici">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_Restoran">
+    <End Role="Restoran" Type="Self.Restoran" Multiplicity="1" />
+    <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restoran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Yorum">
+        <PropertyRef Name="RestoranId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Yorum">
+        <PropertyRef Name="UyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="TasarımModelStoreContainer">
+    <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Icerik" EntityType="Self.Icerik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ilce" EntityType="Self.Ilce" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Odeme" EntityType="Self.Odeme" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Restoran" EntityType="Self.Restoran" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roller" EntityType="Self.Roller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sehir" EntityType="Self.Sehir" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Siparis" EntityType="Self.Siparis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Urun" EntityType="Self.Urun" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Urun_Icerik" EntityType="Self.Urun_Icerik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yonetici" EntityType="Self.Yonetici" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yorum" EntityType="Self.Yorum" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Adres_Ilce" Association="Self.FK_Adres_Ilce">
+      <End Role="Ilce" EntitySet="Ilce" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adres_Sehir" Association="Self.FK_Adres_Sehir">
+      <End Role="Sehir" EntitySet="Sehir" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adres_Uye" Association="Self.FK_Adres_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ilce_Sehir" Association="Self.FK_Ilce_Sehir">
+      <End Role="Sehir" EntitySet="Sehir" />
+      <End Role="Ilce" EntitySet="Ilce" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Odeme_Siparis" Association="Self.FK_Odeme_Siparis">
+      <End Role="Siparis" EntitySet="Siparis" />
+      <End Role="Odeme" EntitySet="Odeme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Restoran_Ilce" Association="Self.FK_Restoran_Ilce">
+      <End Role="Ilce" EntitySet="Ilce" />
+      <End Role="Restoran" EntitySet="Restoran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Restoran_Roller" Association="Self.FK_Restoran_Roller">
+      <End Role="Roller" EntitySet="Roller" />
+      <End Role="Restoran" EntitySet="Restoran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Restoran_Sehir" Association="Self.FK_Restoran_Sehir">
+      <End Role="Sehir" EntitySet="Sehir" />
+      <End Role="Restoran" EntitySet="Restoran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_Urun" Association="Self.FK_Siparis_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_Uye" Association="Self.FK_Siparis_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urun_Icerik_Icerik" Association="Self.FK_Urun_Icerik_Icerik">
+      <End Role="Icerik" EntitySet="Icerik" />
+      <End Role="Urun_Icerik" EntitySet="Urun_Icerik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urun_Icerik_Urun" Association="Self.FK_Urun_Icerik_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="Urun_Icerik" EntitySet="Urun_Icerik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urun_Restoran" Association="Self.FK_Urun_Restoran">
+      <End Role="Restoran" EntitySet="Restoran" />
+      <End Role="Urun" EntitySet="Urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uye_Roller" Association="Self.FK_Uye_Roller">
+      <End Role="Roller" EntitySet="Roller" />
+      <End Role="Uye" EntitySet="Uye" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yonetici_Roller" Association="Self.FK_Yonetici_Roller">
+      <End Role="Roller" EntitySet="Roller" />
+      <End Role="Yonetici" EntitySet="Yonetici" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_Restoran" Association="Self.FK_Yorum_Restoran">
+      <End Role="Restoran" EntitySet="Restoran" />
+      <End Role="Yorum" EntitySet="Yorum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_Uye" Association="Self.FK_Yorum_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Yorum" EntitySet="Yorum" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "Onayla";
+}
+
+
+
+<div class="checkout-left">
+    <div class="checkout-left-basket">
+        <h4>Sepetiniz</h4>
+       
+    </div>
+</div>
+
+    <div class="checkout">
+        <div class="container">
+            <div class="checkout-right">
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                            <th>Price</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tr class="rem1">
+                        <td class="invert">1</td>
+                        <td class="invert-image"><a href="single.html"><img style="width:100px;height:100px;" src="~/Content/images/Resimler/cia.png" alt=" " class="img-responsive" /></a></td>
+                        <td class="invert">
+                            <div class="quantity">
+                                <div class="quantity-select">
+                                    <div class="entry value-minus">&nbsp;</div>
+                                    <div class="entry value"><span>1</span></div>
+                                    <div class="entry value-plus active">&nbsp;</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="invert">Cia Tohumlu Bowl</td>
+
+                        <td class="invert">25 TL</td>
+                        <td class="invert">
+                            <div class="rem">
+                                <div class="close1"> </div>
+                            </div>
+                            <script>
+                                $(document).ready(function (c) {
+                                    $('.close1').on('click', function (c) {
+                                        $('.rem1').fadeOut('slow', function (c) {
+                                            $('.rem1').remove();
+                                        });
+                                    });
+                                });
+                            </script>
+                        </td>
+                    </tr>
+                    <tr class="rem2">
+                        <td class="invert">2</td>
+                        <td class="invert-image"><a href="single.html"><img style="width:100px;height:100px;" src="~/Content/images/Resimler/corba.jpg" alt=" " class="img-responsive" /></a></td>
+                        <td class="invert">
+                            <div class="quantity">
+                                <div class="quantity-select">
+                                    <div class="entry value-minus">&nbsp;</div>
+                                    <div class="entry value"><span>1</span></div>
+                                    <div class="entry value-plus active">&nbsp;</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="invert">Brokoli Çorbası</td>
+
+                        <td class="invert">15 TL</td>
+                        <td class="invert">
+                            <div class="rem">
+                                <div class="close2"> </div>
+                            </div>
+                            <script>
+                                $(document).ready(function (c) {
+                                    $('.close2').on('click', function (c) {
+                                        $('.rem2').fadeOut('slow', function (c) {
+                                            $('.rem2').remove();
+                                        });
+                                    });
+                                });
+                            </script>
+                        </td>
+                    </tr>
+                    <tr class="rem3">
+                        <td class="invert">3</td>
+                        <td class="invert-image"><a href="single.html"><img style="width:100px;height:100px;" src="~/Content/images/Resimler/Kereviz.jpg" alt=" " class="img-responsive" /></a></td>
+                        <td class="invert">
+                            <div class="quantity">
+                                <div class="quantity-select">
+                                    <div class="entry value-minus">&nbsp;</div>
+                                    <div class="entry value"><span>1</span></div>
+                                    <div class="entry value-plus active">&nbsp;</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="invert">Kereviz Salatası</td>
+
+                        <td class="invert">30 TL</td>
+                        <td class="invert">
+                            <div class="rem">
+                                <div class="close3"> </div>
+                            </div>
+                            <script>
+                                $(document).ready(function (c) {
+                                    $('.close3').on('click', function (c) {
+                                        $('.rem3').fadeOut('slow', function (c) {
+                                            $('.rem3').remove();
+                                        });
+                                    });
+                                });
+                            </script>
+                        </td>
+                    </tr>
+                    <!--quantity-->
+                    <script>
+                        $('.value-plus').on('click', function () {
+                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) + 1;
+                            divUpd.text(newVal);
+                        });
+
+                        $('.value-minus').on('click', function () {
+                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) - 1;
+                            if (newVal >= 1) divUpd.text(newVal);
+                        });
+                    </script>
+                    <!--quantity-->
+                </table>
+            </div>
+        </div>
+        <div class="checkout-left">
+            <div class="checkout-left-basket">
+                <h4>Toplam Tutar</h4>
+                <ul>
+                    <li>Kereviz Salatası <i>-</i> <span>30 TL </span></li>
+                    <li>Brokoli Çorbası <i>-</i> <span>15 TL</span></li>
+                    <li>Cia Tohumlu Bowl <i>-</i> <span>25 TL </span></li>
+                    <li>Toplam <i>-</i> <span>70.00 TL</span></li>
+                </ul>
+            </div>
+            <div class="checkout-right-basket">
+                <a href="#"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Ödeme Sayfasına Geçin</a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+

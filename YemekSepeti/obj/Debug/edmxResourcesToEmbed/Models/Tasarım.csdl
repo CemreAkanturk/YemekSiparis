@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TasarımModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adres">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SehirId" Type="Int32" Nullable="false" />
+    <Property Name="IlceId" Type="Int32" Nullable="false" />
+    <Property Name="Icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UyeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ilce" Relationship="Self.FK_Adres_Ilce" FromRole="Adres" ToRole="Ilce" />
+    <NavigationProperty Name="Sehir" Relationship="Self.FK_Adres_Sehir" FromRole="Adres" ToRole="Sehir" />
+    <NavigationProperty Name="Uye" Relationship="Self.FK_Adres_Uye" FromRole="Adres" ToRole="Uye" />
+  </EntityType>
+  <EntityType Name="Icerik">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Urun_Icerik" Relationship="Self.FK_Urun_Icerik_Icerik" FromRole="Icerik" ToRole="Urun_Icerik" />
+  </EntityType>
+  <EntityType Name="Ilce">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SehirId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.FK_Adres_Ilce" FromRole="Ilce" ToRole="Adres" />
+    <NavigationProperty Name="Sehir" Relationship="Self.FK_Ilce_Sehir" FromRole="Ilce" ToRole="Sehir" />
+    <NavigationProperty Name="Restoran" Relationship="Self.FK_Restoran_Ilce" FromRole="Ilce" ToRole="Restoran" />
+  </EntityType>
+  <EntityType Name="Odeme">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OdemeSekli" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SiparisId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_Odeme_Siparis" FromRole="Odeme" ToRole="Siparis" />
+  </EntityType>
+  <EntityType Name="Restoran">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SehirId" Type="Int32" Nullable="false" />
+    <Property Name="IlceId" Type="Int32" Nullable="false" />
+    <Property Name="Puan" Type="Int32" Nullable="false" />
+    <Property Name="RolId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ilce" Relationship="Self.FK_Restoran_Ilce" FromRole="Restoran" ToRole="Ilce" />
+    <NavigationProperty Name="Roller" Relationship="Self.FK_Restoran_Roller" FromRole="Restoran" ToRole="Roller" />
+    <NavigationProperty Name="Sehir" Relationship="Self.FK_Restoran_Sehir" FromRole="Restoran" ToRole="Sehir" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_Urun_Restoran" FromRole="Restoran" ToRole="Urun" />
+    <NavigationProperty Name="Yorum" Relationship="Self.FK_Yorum_Restoran" FromRole="Restoran" ToRole="Yorum" />
+  </EntityType>
+  <EntityType Name="Roller">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RolAdi" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Restoran" Relationship="Self.FK_Restoran_Roller" FromRole="Roller" ToRole="Restoran" />
+    <NavigationProperty Name="Uye" Relationship="Self.FK_Uye_Roller" FromRole="Roller" ToRole="Uye" />
+    <NavigationProperty Name="Yonetici" Relationship="Self.FK_Yonetici_Roller" FromRole="Roller" ToRole="Yonetici" />
+  </EntityType>
+  <EntityType Name="Sehir">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.FK_Adres_Sehir" FromRole="Sehir" ToRole="Adres" />
+    <NavigationProperty Name="Ilce" Relationship="Self.FK_Ilce_Sehir" FromRole="Sehir" ToRole="Ilce" />
+    <NavigationProperty Name="Restoran" Relationship="Self.FK_Restoran_Sehir" FromRole="Sehir" ToRole="Restoran" />
+  </EntityType>
+  <EntityType Name="Siparis">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Ucret" Type="Int32" Nullable="false" />
+    <Property Name="Durum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Kalori" Type="Int32" Nullable="false" />
+    <Property Name="UrunId" Type="Int32" Nullable="false" />
+    <Property Name="UyeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Odeme" Relationship="Self.FK_Odeme_Siparis" FromRole="Siparis" ToRole="Odeme" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_Siparis_Urun" FromRole="Siparis" ToRole="Urun" />
+    <NavigationProperty Name="Uye" Relationship="Self.FK_Siparis_Uye" FromRole="Siparis" ToRole="Uye" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Urun">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Kalori" Type="Int32" Nullable="false" />
+    <Property Name="Fiyat" Type="Int32" Nullable="false" />
+    <Property Name="Fotograf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Acıklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RestoranId" Type="Int32" Nullable="false" />
+    <Property Name="StokMiktari" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Restoran" Relationship="Self.FK_Urun_Restoran" FromRole="Urun" ToRole="Restoran" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_Urun" FromRole="Urun" ToRole="Siparis" />
+    <NavigationProperty Name="Urun_Icerik" Relationship="Self.FK_Urun_Icerik_Urun" FromRole="Urun" ToRole="Urun_Icerik" />
+  </EntityType>
+  <EntityType Name="Urun_Icerik">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IcerikId" Type="Int32" Nullable="false" />
+    <Property Name="UrunId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Icerik" Relationship="Self.FK_Urun_Icerik_Icerik" FromRole="Urun_Icerik" ToRole="Icerik" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_Urun_Icerik_Urun" FromRole="Urun_Icerik" ToRole="Urun" />
+  </EntityType>
+  <EntityType Name="Uye">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Parola" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DogumTarih" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="RolId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.FK_Adres_Uye" FromRole="Uye" ToRole="Adres" />
+    <NavigationProperty Name="Roller" Relationship="Self.FK_Uye_Roller" FromRole="Uye" ToRole="Roller" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_Uye" FromRole="Uye" ToRole="Siparis" />
+    <NavigationProperty Name="Yorum" Relationship="Self.FK_Yorum_Uye" FromRole="Uye" ToRole="Yorum" />
+  </EntityType>
+  <EntityType Name="Yonetici">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Parola" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fotograf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RolId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Roller" Relationship="Self.FK_Yonetici_Roller" FromRole="Yonetici" ToRole="Roller" />
+  </EntityType>
+  <EntityType Name="Yorum">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UyeId" Type="Int32" Nullable="false" />
+    <Property Name="RestoranId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Restoran" Relationship="Self.FK_Yorum_Restoran" FromRole="Yorum" ToRole="Restoran" />
+    <NavigationProperty Name="Uye" Relationship="Self.FK_Yorum_Uye" FromRole="Yorum" ToRole="Uye" />
+  </EntityType>
+  <Association Name="FK_Adres_Ilce">
+    <End Role="Ilce" Type="Self.Ilce" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ilce">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="IlceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adres_Sehir">
+    <End Role="Sehir" Type="Self.Sehir" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehir">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="SehirId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adres_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="UyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urun_Icerik_Icerik">
+    <End Role="Icerik" Type="Self.Icerik" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Urun_Icerik" Type="Self.Urun_Icerik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Icerik">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Urun_Icerik">
+        <PropertyRef Name="IcerikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ilce_Sehir">
+    <End Role="Sehir" Type="Self.Sehir" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ilce" Type="Self.Ilce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehir">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ilce">
+        <PropertyRef Name="SehirId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Restoran_Ilce">
+    <End Role="Ilce" Type="Self.Ilce" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Restoran" Type="Self.Restoran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ilce">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Restoran">
+        <PropertyRef Name="IlceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Odeme_Siparis">
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Odeme" Type="Self.Odeme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Siparis">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Odeme">
+        <PropertyRef Name="SiparisId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Restoran_Roller">
+    <End Role="Roller" Type="Self.Roller" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Restoran" Type="Self.Restoran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roller">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Restoran">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Restoran_Sehir">
+    <End Role="Sehir" Type="Self.Sehir" Multiplicity="1" />
+    <End Role="Restoran" Type="Self.Restoran" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehir">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Restoran">
+        <PropertyRef Name="SehirId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urun_Restoran">
+    <End Role="Restoran" Type="Self.Restoran" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restoran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Urun">
+        <PropertyRef Name="RestoranId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_Restoran">
+    <End Role="Restoran" Type="Self.Restoran" Multiplicity="1" />
+    <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restoran">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Yorum">
+        <PropertyRef Name="RestoranId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uye_Roller">
+    <End Role="Roller" Type="Self.Roller" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Uye" Type="Self.Uye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roller">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Uye">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yonetici_Roller">
+    <End Role="Roller" Type="Self.Roller" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Yonetici" Type="Self.Yonetici" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roller">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Yonetici">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="UrunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="1" />
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="UyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urun_Icerik_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Urun_Icerik" Type="Self.Urun_Icerik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Urun_Icerik">
+        <PropertyRef Name="UrunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Yorum">
+        <PropertyRef Name="UyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TasarımEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adres" EntityType="Self.Adres" />
+    <EntitySet Name="Icerik" EntityType="Self.Icerik" />
+    <EntitySet Name="Ilce" EntityType="Self.Ilce" />
+    <EntitySet Name="Odeme" EntityType="Self.Odeme" />
+    <EntitySet Name="Restoran" EntityType="Self.Restoran" />
+    <EntitySet Name="Roller" EntityType="Self.Roller" />
+    <EntitySet Name="Sehir" EntityType="Self.Sehir" />
+    <EntitySet Name="Siparis" EntityType="Self.Siparis" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Urun" EntityType="Self.Urun" />
+    <EntitySet Name="Urun_Icerik" EntityType="Self.Urun_Icerik" />
+    <EntitySet Name="Uye" EntityType="Self.Uye" />
+    <EntitySet Name="Yonetici" EntityType="Self.Yonetici" />
+    <EntitySet Name="Yorum" EntityType="Self.Yorum" />
+    <AssociationSet Name="FK_Adres_Ilce" Association="Self.FK_Adres_Ilce">
+      <End Role="Ilce" EntitySet="Ilce" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adres_Sehir" Association="Self.FK_Adres_Sehir">
+      <End Role="Sehir" EntitySet="Sehir" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adres_Uye" Association="Self.FK_Adres_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urun_Icerik_Icerik" Association="Self.FK_Urun_Icerik_Icerik">
+      <End Role="Icerik" EntitySet="Icerik" />
+      <End Role="Urun_Icerik" EntitySet="Urun_Icerik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ilce_Sehir" Association="Self.FK_Ilce_Sehir">
+      <End Role="Sehir" EntitySet="Sehir" />
+      <End Role="Ilce" EntitySet="Ilce" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Restoran_Ilce" Association="Self.FK_Restoran_Ilce">
+      <End Role="Ilce" EntitySet="Ilce" />
+      <End Role="Restoran" EntitySet="Restoran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Odeme_Siparis" Association="Self.FK_Odeme_Siparis">
+      <End Role="Siparis" EntitySet="Siparis" />
+      <End Role="Odeme" EntitySet="Odeme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Restoran_Roller" Association="Self.FK_Restoran_Roller">
+      <End Role="Roller" EntitySet="Roller" />
+      <End Role="Restoran" EntitySet="Restoran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Restoran_Sehir" Association="Self.FK_Restoran_Sehir">
+      <End Role="Sehir" EntitySet="Sehir" />
+      <End Role="Restoran" EntitySet="Restoran" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urun_Restoran" Association="Self.FK_Urun_Restoran">
+      <End Role="Restoran" EntitySet="Restoran" />
+      <End Role="Urun" EntitySet="Urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_Restoran" Association="Self.FK_Yorum_Restoran">
+      <End Role="Restoran" EntitySet="Restoran" />
+      <End Role="Yorum" EntitySet="Yorum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uye_Roller" Association="Self.FK_Uye_Roller">
+      <End Role="Roller" EntitySet="Roller" />
+      <End Role="Uye" EntitySet="Uye" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yonetici_Roller" Association="Self.FK_Yonetici_Roller">
+      <End Role="Roller" EntitySet="Roller" />
+      <End Role="Yonetici" EntitySet="Yonetici" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_Urun" Association="Self.FK_Siparis_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_Uye" Association="Self.FK_Siparis_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urun_Icerik_Urun" Association="Self.FK_Urun_Icerik_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="Urun_Icerik" EntitySet="Urun_Icerik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_Uye" Association="Self.FK_Yorum_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Yorum" EntitySet="Yorum" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TasarımModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TasarımModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

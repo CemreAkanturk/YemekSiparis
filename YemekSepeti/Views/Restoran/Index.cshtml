@@ -1,0 +1,309 @@
+﻿@model YemekSepeti.Models.Index
+@{
+    ViewBag.Title = "Index";
+ 
+}
+
+
+<div class="row" style="margin-top:40px;">
+
+    <div class="col-md-3">
+
+        <div class="col-md-12 products-left">
+            <div style="background-color:azure" class="categories">
+                <h4 style="margin-left:25px;"> Kullanıcı Bilgilerim</h4>
+                <img style="margin-left:45px;width:130px;height:130px;border-radius:50%" src="~/Content/images/Resimler/profil.jpg" />
+                <ul class="cate">
+                    <label style="margin-left:-18px;">Ad Soyad:</label>
+                    <li><label style="margin-left:-18px;">@Model.uye.Ad @Model.uye.Soyad</label></li>
+                    <label style="margin-left:-18px;">E-Mail:</label>
+                    <li><label style="margin-left:-18px;">@Model.uye.Mail</label></li>
+                    <label style="margin-left:-18px;">Telefon:</label>
+                    <li><label style="margin-left:-18px;">@Model.uye.Telefon</label></li>
+                    <label style="margin-left:-18px;">Dogum Tarihi:</label>
+                    <li><label style="margin-left:-18px;">@Model.uye.DogumTarih</label></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-9">
+        <ul id="demo1">
+            
+            @foreach (var restoran in Model.yenirestoranlar)
+            {<li>
+
+                <a href="#">
+                    <img src="~/Content/images/11.jpg" alt="" />
+
+                </a>
+
+              
+                <!--Slider Description example-->
+                <div class="slide-desc">
+                    <a class="btn btn-success" href="@Url.Action("RestoranSayfa", new { id = restoran.Id })"> Göz At!</a>
+                </div>
+            </li>
+            }
+
+        </ul>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active ">
+                    <a href="#Sepetim" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Sepetim</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="Sepetim" aria-labelledby="expeditions-tab">
+
+                    <table class="table table-sm">
+                        <thead>
+
+                        </thead>
+                        <tbody id="SepetimTablo">
+                            <tr id="bossepet">                             
+                              <td>Sepetinizde Henüz Ürün Bulunmamaktadır!</td> 
+                            <tr>
+                            </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Toplam:</label>
+                            <input id="Toplam" value="0" disabled>
+                        </div>
+                        <div class="col-md-4">
+                           
+                        </div>
+                        <div style="margin-top:18px;" class="col-md-6">
+                            <a class="btn btn-primary" href="@Url.Action("Onayla")">Onayla</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-8">
+
+        <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#Siparisler" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Siparişlerim</a></li>
+                <li role="presentation" class=""><a href="#Adreslerim" role="tab" id="tours-tab" data-toggle="tab" aria-controls="tours" aria-expanded="false">Kayıtlı Adreslerim</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="Siparisler" aria-labelledby="expeditions-tab">
+
+                    <table class="table table-sm">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            @if (Model.siparislerim.Count == 0)
+                            {
+                                <tr>
+                                    Henüz Bir Siparişiniz Bulunmamaktadır!
+                                </tr>
+
+                            }
+                            else
+                            {
+                                foreach (var siparis in Model.siparislerim)
+                                {
+                                    <tr>
+
+                                        <td>@siparis.Urun.Ad</td>
+                                        <td>@siparis.Kalori Kalori</td>
+                                        <td>@siparis.Ucret TL</td>
+                                        <td>
+                                            <div style="margin-top:1px;" class="snipcart-details top_brand_home_details">
+
+
+
+                                                <input type="submit" name="submit" value="Tekrarla" class="button" data-toogle-UrunAd="@siparis.Urun.Ad"
+                                                       data-toogle-UrunId="@siparis.UrunId" data-toogle-Ucret="@siparis.Ucret"
+                                                       data-toogle-kalori="@siparis.Kalori" data-toogle-uyeId="@siparis.UyeId" />
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Adreslerim" aria-labelledby="tours-tab">
+
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.adreslerim)
+                            {
+                                <tr>
+                                    <th><i class="fa fa-home "></i></th>
+                                    <td>@item.Ad</td>
+                                    <td>@item.Icerik</td>
+                                    <td>@item.Sehir.Ad</td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active ">
+                    <a href="#Sepetim" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Restoranlarımız</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="Sepetim" aria-labelledby="expeditions-tab">
+
+
+                    <table id="example" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var restoran in Model.yenirestoranlar)
+                            {
+                            <tr>
+
+                                <td><button style="margin:20px 20px 20px 20px;width:60px;height:30px;" disabled class="btn-success">@restoran.Puan<span>&#11088;</span></button></td>
+                                <td>@restoran.Ad</td>
+                                <td><a class="btn btn-primary" href="@Url.Action("RestoranSayfa", new { id = restoran.Id })"> Ürünleri Görüntüle!</a></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</div>
+
+
+
+
+@section scripts{
+
+    <script>
+
+     
+        $(document).ready(function () {
+
+              var table = $('#example').DataTable( {
+      "responsive": true,
+        "dom": '<"html5buttons"B>lTfgitp',
+        "language": {
+            "emptyTable": "Gösterilecek restoran yok.",
+            "processing": "Restoranlar yükleniyor",
+            "sDecimal": ".",
+            "sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki restoranlar gösteriliyor",
+            "sInfoFiltered": "(_MAX_ restoran içerisinden bulunan)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ".",
+            "sLengthMenu": "Sayfada _MENU_ restoran göster",
+            "sLoadingRecords": "Yükleniyor...",
+            "sSearch": "Ara:",
+            "sZeroRecords": "Eşleşen restoran bulunamadı",
+            "oPaginate": {
+                "sFirst": "İlk",
+                "sLast": "Son",
+                "sNext": "Sonraki",
+                "sPrevious": "Önceki"
+            },
+            "oAria": {
+                "sSortAscending": ": artan sütun sıralamasını aktifleştir",
+                "sSortDescending": ": azalan sütun sıralamasını aktifleştir"
+            },
+            "select": {
+                "rows": {
+                    "_": "%d restoran seçildi",
+                    "0": "",
+                    "1": "1 restoran seçildi"
+                }
+            }
+        }
+          } );
+
+
+            $(".button").on("click", function () {
+                
+                var urunAdi = $(this).attr("data-toogle-UrunAd");
+                var urunid = $(this).attr("data-toogle-UrunId");
+                var ucret = $(this).attr("data-toogle-Ucret");
+                var kalori = $(this).attr("data-toogle-kalori");
+                var uyeid = $(this).attr("data-toogle-uyeId");
+
+                $("#bossepet").remove();
+
+
+                $("#SepetimTablo").append(`
+        <tr id="${urunAdi}">
+        <td>${urunAdi}</td>
+        <td>${kalori} Kalori</td>
+        <td class="urunucret">${ucret} TL</td>
+        <td><a data-toogle-id="${urunAdi}" data-toogle-ucret="${ucret}"  class="btn btn-success Kaldir"> Kaldir</a></td>
+        <tr>
+        `);
+                
+
+                var Toplam = document.getElementById("Toplam").value;
+                var yeniToplam = parseInt(Toplam) + parseInt(ucret);
+                 $("#Toplam").attr("value",yeniToplam+"TL");
+
+
+            });
+
+            $(document).on("click", ".Kaldir", function () {
+
+                var id = $(this).attr("data-toogle-id");   
+                 var ucret = $(this).attr("data-toogle-ucret"); 
+
+                document.getElementById(id).remove();
+                var Toplam = document.getElementById("Toplam").value;
+                var yeniToplam = parseInt(Toplam) - parseInt(ucret);
+                 $("#Toplam").attr("value",yeniToplam+"TL");
+            });
+
+          
+     
+  
+
+        });
+
+
+    </script>
+
+}
